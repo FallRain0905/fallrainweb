@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-hover: #f1f5f9;
+  --border: #e2e8f0;
+  --muted: #94a3b8;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --danger: #ef4444;
+  --sidebar: #1e293b;
+  --sidebar-text: #e2e8f0;
+  --sidebar-hover: #334155;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-danger: var(--danger);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-text: var(--sidebar-text);
+  --color-sidebar-hover: var(--sidebar-hover);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f172a;
+    --foreground: #e2e8f0;
+    --card: #1e293b;
+    --card-hover: #334155;
+    --border: #334155;
+    --muted: #64748b;
+    --primary: #60a5fa;
+    --primary-hover: #3b82f6;
+    --danger: #f87171;
+    --sidebar: #0f172a;
+    --sidebar-text: #e2e8f0;
+    --sidebar-hover: #1e293b;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }

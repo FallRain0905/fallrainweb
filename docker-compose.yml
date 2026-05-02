@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: nav-db
+    environment:
+      POSTGRES_USER: navuser
+      POSTGRES_PASSWORD: navpass
+      POSTGRES_DB: navdb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U navuser -d navdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: nav-app
+    environment:
+      DATABASE_URL: postgresql://navuser:navpass@db:5432/navdb
+      AUTH_SECRET: ${AUTH_SECRET:-change-me-in-production}
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: always
+
+volumes:
+  pgdata:
